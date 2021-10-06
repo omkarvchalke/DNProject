@@ -11,7 +11,7 @@ import com.DNProject.models.Patient;
 public interface AdminDAO {
 	public void changePass(Admin admin);
 	public ResponseEntity<Appointment> bookAppoint(Appointment appointment);
-	public List<Patient> getPatients();
+	public ResponseEntity<List<Patient>> getPatients();
 	public Patient getPatient(String name); //search
 	public void removePatient();
 	

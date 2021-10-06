@@ -11,12 +11,14 @@ import com.DNProject.models.Admin;
 import com.DNProject.models.Appointment;
 import com.DNProject.models.Patient;
 import com.DNProject.repos.AppointRepo;
+import com.DNProject.repos.PatientRepo;
 
 @Repository
 public class AdminDAOImpl implements AdminDAO {
 	
 	@Autowired
-	AppointRepo arepo;
+	private AppointRepo arepo;
+	private PatientRepo prepo;
 	
 	
 	@Override
@@ -38,9 +40,15 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
-	public List<Patient> getPatients() {
-		// TODO Auto-generated method stub
-		return null;
+	public ResponseEntity<List<Patient>> getPatients() {
+		List<Patient> patients = prepo.findAll();
+		if(patients.size() > 0) {
+			return new ResponseEntity<List<Patient>>(patients,HttpStatus.OK);
+		}
+		else {
+			return null;
+		}
+		
 	}
 
 	@Override

@@ -8,6 +8,7 @@ public class DnProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DnProjectApplication.class, args);
+		
 	}
 
 }
