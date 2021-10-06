@@ -7,7 +7,7 @@ const Navbar = (props) => {
     <div>
       <nav className="navbar navbar-expand-md navbar-light bg-light">
         <a className="navbar-brand" href="#">
-          <img src="./src/images/logo.png" alt="img not found" />
+          <img src="./src/images/logo.png" alt={props.panel_name} />
         </a>
         <button
           className="navbar-toggler"

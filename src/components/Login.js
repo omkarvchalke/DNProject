@@ -78,7 +78,7 @@ const Login = () => {
                   <Link to="/docLogin">Doc Login</Link>
                 </p>
                 <p className="mb-0">
-                  <Link to="/Admin" className="text-center">
+                  <Link to="/adminLogin" className="text-center">
                     Register a new membership
                   </Link>
                 </p>

@@ -2,21 +2,22 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import PatientsDisp from "../components/PatientsDisp";
 
-const DocLogin = () => {
+const AdminLogin = () => {
   return (
     <div>
       <Navbar
         Link1="Patients"
-        Link2="Appointments"
-        Link3="Graph"
-        redirect1="/docLogin"
-        redirect2="/docAppointments"
+        Link2="Book an Appointment"
+        Link3="Income Graph"
+        Link4="Change Doctor Password"
+        redirect1="/adminLogin"
+        redirect2="/adminAppointment"
         redirect3="/"
-        panel_name="Doctor"
+        panel_name="Admin"
       />
       <PatientsDisp />
     </div>
   );
 };
 
-export default DocLogin;
+export default AdminLogin;
