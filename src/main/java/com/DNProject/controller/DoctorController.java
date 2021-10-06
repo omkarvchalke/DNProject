@@ -1,8 +1,11 @@
 package com.DNProject.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.DNProject.models.Appointment;
 import com.DNProject.models.Patient;
+import com.DNProject.repos.AppointRepo;
+import com.DNProject.repos.PatientRepo;
 import com.DNProject.utils.AdminDAO;
 import com.DNProject.utils.DoctorDAO;
 
@@ -23,31 +28,61 @@ import com.DNProject.utils.DoctorDAO;
 @RestController
 @RequestMapping(value="/doctor",method= RequestMethod.GET)
 public class DoctorController {
+//	@Autowired
+//	AdminDAO adminDao;
+//	DoctorDAO doctorDao;
 	@Autowired
-	AdminDAO adminDao;
-	DoctorDAO doctorDao;
+	private AppointRepo appointRepo;
+	@Autowired
+	private PatientRepo patientRepo;
+	
 	
 	@GetMapping(value="/allPatients")
-	public List<Patient> getPatients(){
-		return doctorDao.getPatients();
+	public ResponseEntity<?> getPatients(){
+		//return adminDao.getPatients();
+		List<Patient> patients = patientRepo.findAll();
+		if(patients.size() > 0) {
+			return new ResponseEntity<List<Patient>>(patients,HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<>("No Paitients Available",HttpStatus.NOT_FOUND);
+		}
 	}
+	
 	@GetMapping(value="/allAppointments")
-	public List<Appointment> getAppoinments(){
-		return doctorDao.getAppointments();
-	}
+	public ResponseEntity<?> getAppointments(){
+		//return adminDao.getPatients();
+		List<Appointment> appointments = appointRepo.findAll();
+		if(appointments.size() > 0) {
+			return new ResponseEntity<List<Appointment>>(appointments,HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<>("No Paitients Available",HttpStatus.NOT_FOUND);
+		}
+	}	
+	
 	@PutMapping(value="/editPatient")
 	public void editPatient(@RequestBody Patient patient) {
-		doctorDao.editPatient();
+		//doctorDao.editPatient();
 	}
+	
+	
 	//searchPatient()
 	
 	@GetMapping(value="/getPatient/{pname}")
-	public Patient getPatient(@PathVariable String pname) {
-		return doctorDao.searchPatient(pname);
+	public ResponseEntity<Appointment> getPatient(@PathVariable("pname") String paname) {
+		Optional<Appointment> patientData = appointRepo.findByName(paname);
+		if(patientData.isPresent()) {
+			return new ResponseEntity<>(patientData.get(),HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
+	
 	@DeleteMapping(value="/removePatient")
 	public void removePatient() {
-		doctorDao.deletePatient();
+		//doctorDao.deletePatient();
 	}
 	
 	
