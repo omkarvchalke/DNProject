@@ -15,14 +15,10 @@ const DocLogin = () => {
         redirect3="/docGraph"
         panel_name="Doctor"
       />
-<<<<<<< HEAD
       <PatientsDisp />
       <div class="fixed-bottom">
         <Footer />
       </div>
-=======
-      <PatientsDisp/>
->>>>>>> 8fbc4a3030915723943f389bc58224362bbf2409
     </div>
   );
 };

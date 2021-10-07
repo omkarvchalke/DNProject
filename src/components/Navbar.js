@@ -67,7 +67,6 @@ const Navbar = (props) => {
             >
               Search
             </button>
-<<<<<<< HEAD
             { 
             props.logout===false ?
             <Link to="/">
@@ -77,14 +76,6 @@ const Navbar = (props) => {
               <button className="ml-2 btn btn-outline-danger">Logout</button>
               </ Link>
             }
-            
-=======
-            {props.logout === false ? null : (
-              <Link to="/">
-                <button className="ml-2 btn btn-outline-danger">Logout</button>
-              </Link>
-            )}
->>>>>>> 8fbc4a3030915723943f389bc58224362bbf2409
           </form>
         </div>
       </nav>

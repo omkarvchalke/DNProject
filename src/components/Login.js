@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Login = () => {
+  const [cred, setCred] =
+  useState([{ docName: "Doctor1", docPass: "12345" }, { adminName: "Admin", docPass: "12345" }])
+  const [docName,setdocName]=useState("")
+  const [docPass,setdocPass]=useState("")
   return (
     <div className="container-fluid">
       <div className="row">
@@ -23,7 +28,9 @@ const Login = () => {
                     <input
                       type="email"
                       className="form-control"
-                      placeholder="Email"
+                      placeholder="Username"
+                      value={docName}
+                      onChange={(e) => setdocName(e.target.value)}
                     />
                     <div className="input-group-append">
                       <div className="input-group-text">
@@ -33,9 +40,12 @@ const Login = () => {
                   </div>
                   <div className="input-group mb-3">
                     <input
+                      id="password"
                       type="password"
                       className="form-control"
                       placeholder="Password"
+                      value={docPass}
+                      onChange={(e) => setdocPass(e.target.value)}
                     />
                     <div className="input-group-append">
                       <div className="input-group-text">
@@ -43,53 +53,30 @@ const Login = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="row">
-                    <div className="col-8">
-                      <div className="icheck-primary">
-                        <input type="checkbox" id="remember" />
-                        <label htmlFor="remember">Remember Me</label>
-                      </div>
-                    </div>
+                  <div className="row justify-content-center">
                     {/* /.col */}
-                    <div className="col-4">
+                    <div className="col-6">
+                          <button
+                            type="submit"
+                            className="btn btn-primary btn-block">
+                            <Link to="/docLogin" className="text-center text-light">Doc Login</Link>
+                          </button>
+                    </div>
+                    <div className="col-6">
                       <button
                         type="submit"
-                        className="btn btn-primary btn-block"
-                      >
-                        Sign In
+                        className="btn btn-secondary btn-block">
+                        <Link to="/adminLogin" className="text-center text-light">Admin Login</Link>
                       </button>
                     </div>
-                    {/* /.col */}
                   </div>
                 </form>
-                <div className="social-auth-links text-center mb-3">
-                  <p>- OR -</p>
-                  <a href="#" className="btn btn-block btn-primary">
-                    <i className="fab fa-facebook mr-2" /> Sign in using
-                    Facebook
-                  </a>
-                  <a href="#" className="btn btn-block btn-danger">
-                    <i className="fab fa-google-plus mr-2" /> Sign in using
-                    Google+
-                  </a>
-                </div>
-                {/* /.social-auth-links */}
-                <p className="mb-1">
-                  <Link to="/docLogin">Doc Login</Link>
-                </p>
-                <p className="mb-0">
-                  <Link to="/adminLogin" className="text-center">
-                    Register a new membership
-                  </Link>
-                </p>
-
-                {/* /.login-card-body */}
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 

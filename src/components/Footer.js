@@ -2,59 +2,11 @@ import React from 'react'
 import SimpleReactFooter from "simple-react-footer";
 
 const Footer = () => {
-     const description = "According to wikipedia, the cat (Felis catus) is a domestic species of small carnivorous mammal. It is the only domesticated species in the family Felidae and is often referred to as the domestic cat to distinguish it from the wild members of the family. A cat can either be a house cat, a farm cat or a feral cat; the latter ranges freely and avoids human contact.";
-    const title = "Cats";
-    const columns = [
-      {
-          title: "Resources",
-          resources: [
-              {
-                  name: "About",
-                  link: "/about"
-              },
-              {
-                  name: "Careers",
-                  link: "/careers"
-              },
-              {
-                  name: "Contact",
-                  link: "/contact"
-              },
-              {
-                  name: "Admin",
-                  link: "/admin"
-              }
-          ]
-      },
-      {
-          title: "Legal",
-          resources: [
-              {
-                  name: "Privacy",
-                  link: "/privacy"
-              },
-              {
-                  name: "Terms",
-                  link: "/terms"
-              }
-          ]
-      },
-      {
-          title: "Visit",
-          resources: [
-              {
-                  name: "Locations",
-                  link: "/locations"
-              },
-              {
-                  name: "Culture",
-                  link: "/culture"
-              }
-          ]
-      }
-   ];
+     const description = "";
+    const title = "";
+    const columns = [];
     return (
-        <div className="col-12 mt-5">
+        <div className="col-12 w-100 px-0 mx-0 mt-5">
     <SimpleReactFooter 
       description={description} 
       title={title}
@@ -67,7 +19,8 @@ const Footer = () => {
       pinterest="fluffy_cats_collections"
       copyright="black"
       iconColor="black"
-      backgroundColor="bisque"
+      width="100%"
+      backgroundColor="#f8f999"
       fontColor="black"
       copyrightColor="darkgrey"
    />
