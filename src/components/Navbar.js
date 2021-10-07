@@ -8,7 +8,12 @@ const Navbar = (props) => {
     <div>
       <nav className="navbar sticky navbar-expand-md navbar-light bg-light">
         <a className="navbar-brand" href="#">
-          <img width="40" height="40" src={props.Image} alt={props.panel_name} />
+          <img
+            width="40"
+            height="40"
+            src={props.Image}
+            alt={props.panel_name}
+          />
         </a>
         <button
           className="navbar-toggler"
@@ -62,6 +67,7 @@ const Navbar = (props) => {
             >
               Search
             </button>
+<<<<<<< HEAD
             { 
             props.logout===false ?
             <Link to="/">
@@ -72,6 +78,13 @@ const Navbar = (props) => {
               </ Link>
             }
             
+=======
+            {props.logout === false ? null : (
+              <Link to="/">
+                <button className="ml-2 btn btn-outline-danger">Logout</button>
+              </Link>
+            )}
+>>>>>>> 8fbc4a3030915723943f389bc58224362bbf2409
           </form>
         </div>
       </nav>
