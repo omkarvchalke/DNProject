@@ -15,7 +15,7 @@ const DocLogin = () => {
         redirect3="/docGraph"
         panel_name="Doctor"
       />
-      <PatientsDisp />
+      <PatientsDisp/>
     </div>
   );
 };

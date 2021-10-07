@@ -1,39 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const PatientsDisp = () => {
-  const [modalShow, setModalShow] = useState(false);
-
-  //     const [associates, setAssociates] = useState([]);
-  //   //const [currAssc, setCurrAssc] = useState({});
-
-  //   useEffect(() => {
-  //     console.log("hehe");
-  //     fetchAll();
-  //   }, []);
-
-  //   const fetchAll = () => {
-  //     AssociateService.getAll()
-  //       .then((response) => {
-  //         setAssociates(response.data);
-  //       })
-  //       .catch((e) => {
-  //         console.log(e);
-  //       });
-  //   };
-
-  //   const handleDelete = (id) => {
-  //     AssociateService.delAssc(id)
-  //       .then((response) => {
-  //         fetchAll();
-  //       })
-  //       .catch((e) => {
-  //         console.log(e);
-  //       });
-  //   };
-
-  //   const handleUpdate = (id) => {};
-
-  const patients = [
+  const [patients, setPatients] = useState([
     {
       pname: "Omkar",
       page: 21,
@@ -73,13 +41,77 @@ const PatientsDisp = () => {
       dose: "Twice a day",
       fees: 300,
     },
-  ];
+  ]);
+  const [pname, setpName] = useState("");
+  const [page, setpAge] = useState("");
+  const [pgender, setpGender] = useState("");
+  const [pcontact, setpContact] = useState("");
+  const [prevDiagno, setPrevDiagno] = useState("");
+  const [CurrDiagno, setCurrDiagno] = useState("");
+  const [prevMeds, setprevMeds] = useState("");
+  const [CurrMeds, setCurrMeds] = useState("");
+  const [dose, setDose] = useState("");
+  const [iIllness, setIllness] = useState("");
+  const [fees, setFees] = useState("");
+
+  const addPatients = (pat) => {
+    // console.log(patients);
+    // const id = Math.floor(Math.random() * 10000) + 1;
+    // console.log(id)
+    // const newPatients = {  ...patients };
+    console.log(pat);
+    setPatients([...patients, pat]);
+    console.log(patients);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (!pname) {
+      alert("Please Add a Task");
+      return;
+    }
+    addPatients({ pname, page, pcontact });
+
+    console.log("Console print :", pname, page, pcontact);
+    setpName("");
+    setpAge("");
+    setpContact("");
+  };
+
+  //     const [associates, setAssociates] = useState([]);
+  //   //const [currAssc, setCurrAssc] = useState({});
+
+  //   useEffect(() => {
+  //     console.log("hehe");
+  //     fetchAll();
+  //   }, []);
+
+  //   const fetchAll = () => {
+  //     AssociateService.getAll()
+  //       .then((response) => {
+  //         setAssociates(response.data);
+  //       })
+  //       .catch((e) => {
+  //         console.log(e);
+  //       });
+  //   };
+
+  //   const handleDelete = (id) => {
+  //     AssociateService.delAssc(id)
+  //       .then((response) => {
+  //         fetchAll();
+  //       })
+  //       .catch((e) => {
+  //         console.log(e);
+  //       });
+  //   };
+
+  //   const handleUpdate = (id) => {};
 
   return (
     <div>
-      <h2 class="text-center">Patients</h2>
-
-      <div className="col-md-8 mx-auto">
+      <div className="col-md-8 mx-auto mt-5">
+        <h2 class="text">Patients</h2>
         <table className="table">
           <thead>
             <tr>
@@ -138,7 +170,7 @@ const PatientsDisp = () => {
           </tbody>
         </table>
         {patients &&
-          patients.map((pati) => (
+          patients.map((i) => (
             <div>
               <div
                 class="modal fade"
@@ -167,7 +199,7 @@ const PatientsDisp = () => {
                       </button>
                     </div>
                     <div class="modal-body">
-                      <form>
+                      <form onSubmit={onSubmit}>
                         <div className="form-group row">
                           <label className="col-md-3 col-form-label">
                             Name
@@ -178,6 +210,8 @@ const PatientsDisp = () => {
                               className="form-control"
                               id="pName"
                               placeholder="Name"
+                              value={pname}
+                              onChange={(e) => setpName(e.target.value)}
                             />
                           </div>
                         </div>
@@ -189,6 +223,8 @@ const PatientsDisp = () => {
                               className="form-control"
                               id="pAge"
                               placeholder="Age"
+                              value={page}
+                              onChange={(e) => setpAge(e.target.value)}
                             />
                           </div>
                         </div>
@@ -242,6 +278,8 @@ const PatientsDisp = () => {
                               className="form-control"
                               id="pContact"
                               placeholder="Contact Number"
+                              value={pcontact}
+                              onChange={(e) => setpContact(e.target.value)}
                             />
                           </div>
                         </div>
@@ -256,6 +294,7 @@ const PatientsDisp = () => {
                               id="pPrevDiagnosis"
                               placeholder="Previous Diagnosis from mongo"
                               disabled
+                              
                             />
                           </div>
                         </div>{" "}
@@ -338,25 +377,32 @@ const PatientsDisp = () => {
                             />
                           </div>
                         </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            Close
+                          </button>
+
+                          <button type="submit" class="btn btn-primary">
+                            Save changes
+                          </button>
+                        </div>
                       </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-dismiss="modal"
-                      >
-                        Close
-                      </button>
-                      <button type="button" class="btn btn-primary">
-                        Save changes
-                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-              {/* View Patient Modal below */}
-              <div
+            </div>
+          ))}
+        //remove later
+
+        {/* View Patient Modal below */}
+        {patients &&
+          patients.map((i) => (
+          <div
                 class="modal fade"
                 id="ViewPatient"
                 tabindex="-1"
@@ -388,13 +434,13 @@ const PatientsDisp = () => {
                           Name :
                         </label>
                         <div className="col-md-9">
-                          <label className="col-form-label">{pati.pname}</label>
+                          <label className="col-form-label">{i.pname}</label>
                         </div>
                       </div>
                       <div className="form-group row">
                         <label className="col-md-3 col-form-label">Age</label>
                         <div className="col-md-9">
-                          <label className="col-form-label">{pati.page}</label>
+                          <label className="col-form-label">{i.page}</label>
                         </div>
                       </div>
                       <div className="form-group row">
@@ -403,7 +449,7 @@ const PatientsDisp = () => {
                         </label>
                         <div className="col-md-9">
                           <label className="col-form-label">
-                            {pati.pgender}
+                            {i.pgender}
                           </label>
                         </div>
                       </div>
@@ -413,7 +459,7 @@ const PatientsDisp = () => {
                         </label>
                         <div className="col-md-9">
                           <label className="col-form-label">
-                            {pati.pcontact}
+                            {i.pcontact}
                           </label>
                         </div>
                       </div>
@@ -421,11 +467,11 @@ const PatientsDisp = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            
           ))}
+        {/*Iterating Patients list */}
       </div>
     </div>
-
     // <div className="list row">
     //   <div className="col-md-8 mx-auto">
     //     <h4>Associates List</h4>

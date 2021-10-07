@@ -40,18 +40,14 @@ const AppointmentDisp = () => {
     },
   ];
   return (
-    <div className="col-md-8 mx-auto">
+    <div className="col-md-8 mx-auto mt-5">
       <h2>Appointments</h2>
 
       <table className="table">
         <thead>
           <tr>
             <th>Name</th>
-            <th>Age</th>
-            <th>Gender</th>
-            <th>Diagnosis</th>
-            <th>Dose</th>
-            <th>Fees</th>
+
             <th></th>
             <th></th>
             <th></th>
@@ -62,25 +58,25 @@ const AppointmentDisp = () => {
             <tbody key={appoint.id}>
               <tr>
                 <td>{appoint.name}</td>
-                <td>{appoint.subject1}</td>
+                {/* <td>{appoint.subject1}</td>
                 <td>{appoint.subject2}</td>
                 <td>{appoint.subject3}</td>
                 <td>{appoint.average}</td>
-                <td>{appoint.total}</td>
+                <td>{appoint.total}</td> */}
                 <td>
                   <button
                     // onClick={() => handleUpdate(pati.id)}
                     type="button"
-                    className="btn btn-outline-warning btn-sm"
+                    className=" btn btn-block btn-outline-warning btn-sm"
                   >
-                    Complete
+                    Diagnose
                   </button>
                 </td>
                 <td>
                   <button
                     // onClick={() => handleDelete(pati.id)}
                     type="button"
-                    className="btn btn-outline-danger btn-sm"
+                    className="btn btn-block btn-outline-danger btn-sm"
                   >
                     Delete
                   </button>
