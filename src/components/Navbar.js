@@ -1,11 +1,12 @@
 import React from "react";
-
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import '../css/Navbar.css';
+
 
 const Navbar = (props) => {
   return (
     <div>
-      <nav className="navbar navbar-expand-md navbar-light bg-light">
+      <nav className="navbar sticky navbar-expand-md navbar-light bg-light">
         <a className="navbar-brand" href="#">
           <img width="40" height="40" src={props.Image} alt={props.panel_name} />
         </a>
@@ -63,7 +64,9 @@ const Navbar = (props) => {
             </button>
             { 
             props.logout===false ?
-              null
+            <Link to="/">
+            <button className="invisible btn btn-outline-danger">Logout</button>
+            </ Link>
               : <Link to="/">
               <button className="ml-2 btn btn-outline-danger">Logout</button>
               </ Link>

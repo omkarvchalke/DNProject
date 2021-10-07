@@ -1,7 +1,7 @@
 import React from 'react'
 import AppointmentDisp from '../components/AppointmentDisp'
 import Navbar from '../components/Navbar'
-
+import Footer from "../components/Footer";
 const DocAppointments = () => {
     return (
         <div>
@@ -16,6 +16,9 @@ const DocAppointments = () => {
         panel_name="Doctor"
       />
       <AppointmentDisp />
+      <div class="fixed-bottom">
+        <Footer />
+      </div>
         </div>
     )
 }

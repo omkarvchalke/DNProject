@@ -2,7 +2,7 @@ import Carousel from "../components/Carousel";
 import FaqQuestions from "../components/FaqQuestions";
 import Login from "../components/Login";
 import Navbar from "../components/Navbar";
-
+import Footer from "../components/Footer";
 const Faq = () => {
   return (
     <div>
@@ -19,6 +19,7 @@ const Faq = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

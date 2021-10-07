@@ -95,7 +95,7 @@ const PatientsDisp = () => {
               patients.map((pati) => (
                 <tr key={pati.pname}>
                   <td>{pati.pname}</td>
-
+                  
                   {/* <td>{pati.subject1}</td>
                 <td>{pati.subject2}</td>
                 <td>{pati.subject3}</td>

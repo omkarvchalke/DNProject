@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row">
         <div className="col-md-4">
           <div className="box-right">

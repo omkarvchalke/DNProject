@@ -2,6 +2,7 @@ import React from "react";
 import AppointmentDisp from "../components/AppointmentDisp";
 import Navbar from "../components/Navbar";
 import PatientsDisp from "../components/PatientsDisp";
+import Footer from "../components/Footer";
 
 const AdminAppointment = () => {
   return (
@@ -18,6 +19,9 @@ const AdminAppointment = () => {
         panel_name="Admin"
       />
       <AppointmentDisp />
+      <div class="fixed-bottom">
+        <Footer />
+      </div>
     </div>
   );
 };
