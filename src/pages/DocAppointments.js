@@ -6,6 +6,7 @@ const DocAppointments = () => {
     return (
         <div>
              <Navbar
+             Image="https://toppng.com/uploads/preview/icon-doctor-icon-115535104759u0mwhoaci.png"
         Link1="Patients"
         Link2="Appointments"
         Link3="Graph"

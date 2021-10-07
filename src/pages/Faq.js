@@ -6,7 +6,9 @@ import Navbar from "../components/Navbar";
 const Faq = () => {
   return (
     <div>
-      <Navbar Link1="News Feed" Link2="FAQ" redirect1="/" redirect2="/faq" />
+      <Navbar 
+      Image="https://toppng.com/uploads/preview/health-plan-icon-hospital-icon-blue-11553476430fckf2owtwt.png"
+      Link1="News Feed" Link2="FAQ" redirect1="/" redirect2="/faq" />
       <div class="container-fluid ml-3">
         <div class="row">
           <div class=" container-fluid col-md-8 mt-5 ">

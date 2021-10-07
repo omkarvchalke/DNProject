@@ -35,6 +35,7 @@ const AdminGraph = () => {
     return (
         <div>
             <Navbar
+            Image="https://toppng.com/uploads/preview/health-plan-icon-hospital-icon-blue-11553476430fckf2owtwt.png"
                 Link1="Patients"
                 Link2="Book an Appointment"
                 Link3="Income Graph"

@@ -7,7 +7,7 @@ const Navbar = (props) => {
     <div>
       <nav className="navbar navbar-expand-md navbar-light bg-light">
         <a className="navbar-brand" href="#">
-          <img src="./src/images/logo.png" alt={props.panel_name} />
+          <img width="40" height="40" src={props.Image} alt={props.panel_name} />
         </a>
         <button
           className="navbar-toggler"
@@ -22,7 +22,7 @@ const Navbar = (props) => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
+            <li className="nav-item ml-auto">
               <Link className="nav-link" to={props.redirect1}>
                 {props.Link1} <span className="sr-only">(current)</span>
               </Link>
@@ -61,6 +61,14 @@ const Navbar = (props) => {
             >
               Search
             </button>
+            { 
+            props.logout===false ?
+              null
+              : <Link to="/">
+              <button className="ml-2 btn btn-outline-danger">Logout</button>
+              </ Link>
+            }
+            
           </form>
         </div>
       </nav>
