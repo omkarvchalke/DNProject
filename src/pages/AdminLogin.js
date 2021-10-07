@@ -12,7 +12,7 @@ const AdminLogin = () => {
         Link4="Change Doctor Password"
         redirect1="/adminLogin"
         redirect2="/adminAppointment"
-        redirect3="/"
+        redirect3="/adminGraph"
         panel_name="Admin"
       />
       <PatientsDisp />

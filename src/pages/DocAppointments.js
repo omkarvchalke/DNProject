@@ -11,7 +11,7 @@ const DocAppointments = () => {
         Link3="Graph"
         redirect1="/docLogin"
         redirect2="/docAppointments"
-        redirect3="/"
+        redirect3="/docGraph"
         panel_name="Doctor"
       />
       <AppointmentDisp />
