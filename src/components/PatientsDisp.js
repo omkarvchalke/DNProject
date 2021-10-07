@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 const PatientsDisp = () => {
+  const [modalShow, setModalShow] = useState(false);
+
   //     const [associates, setAssociates] = useState([]);
   //   //const [currAssc, setCurrAssc] = useState({});
 
@@ -101,6 +103,8 @@ const PatientsDisp = () => {
                     // onClick={() => handleUpdate(pati.id)}
                     type="button"
                     className="btn btn-outline-warning btn-sm"
+                    data-toggle="modal"
+                    data-target="#EditPatient"
                   >
                     Edit
                   </button>
@@ -119,7 +123,6 @@ const PatientsDisp = () => {
                     // onClick={() => handleDelete(pati.id)}
                     type="button"
                     className="btn btn-outline-success btn-sm"
-                    data-toggle="modal" data-target="#exampleModalCenter"
                   >
                     View
                   </button>
@@ -128,26 +131,224 @@ const PatientsDisp = () => {
             </tbody>
           ))}
       </table>
+      {/* Below is the modal code for Edit Patient */}
+      <div
+        class="modal fade"
+        id="EditPatient"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="EditPatientModal"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">
+                Edit Patient
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div className="form-group row">
+                  <label className="col-sm-2 col-form-label">Name</label>
+                  <div className="col-sm-10">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="pName"
+                      placeholder="Name"
+                    />
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label className="col-sm-2 col-form-label">Age</label>
+                  <div className="col-sm-10">
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="pAge"
+                      placeholder="Age"
+                    />
+                  </div>
+                </div>
+                <fieldset className="form-group">
+                  <div className="row">
+                    <label className="col-form-label col-sm-2">Gender</label>
+                    <div className="col-sm-10">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="pGender"
+                          id="pGender1"
+                          defaultValue="option1"
+                          defaultChecked
+                        />
+                        <label className="form-check-label" htmlFor="pGender1">
+                          Male
+                        </label>
+                      </div>
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="pGender"
+                          id="pGender2"
+                          defaultValue="option2"
+                        />
+                        <label className="form-check-label" htmlFor="pGender2">
+                          Female
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <div className="form-group row">
+                  <label className="col-sm-2 col-form-label">Contact</label>
+                  <div className="col-sm-10">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="pContact"
+                      placeholder="Contact Number"
+                    />
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label className="col-sm-2 col-form-label">
+                    Previous Diagnosis
+                  </label>
+                  <div className="col-sm-10">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="pPrevDiagnosis"
+                      placeholder="Previous Diagnosis from mongo"
+                      disabled
+                    />
+                  </div>
+                </div>{" "}
+                <div className="form-group row">
+                  <label className="col-sm-2 col-form-label">
+                    Current Diagnosis
+                  </label>
+                  <div className="col-sm-10">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="pCurrDiagnosis"
+                      placeholder="Current Diagnosis"
+                    />
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label className="col-sm-2 col-form-label">
+                    Previous Medication
+                  </label>
+                  <div className="col-sm-10">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="pPrevMeds"
+                      placeholder="Previous Medication from mongo"
+                      disabled
+                    />
+                  </div>
+                </div>{" "}
+                <div className="form-group row">
+                  <label className="col-sm-2 col-form-label">
+                    Current Medicines
+                  </label>
+                  <div className="col-sm-10">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="pCurrMeds"
+                      placeholder="Current Medicines"
+                    />
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label className="col-sm-2 col-form-label">Dose</label>
+                  <div className="col-sm-10">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="pDose"
+                      placeholder="Dose"
+                    />
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label className="col-sm-2 col-form-label">Illness</label>
+                  <div className="col-sm-10">
+                    <div class="dropdown show form-contol">
+                      <a
+                        class="btn btn-light btn-block dropdown-toggle "
+                        href="#"
+                        role="button"
+                        id="dropdownMenuLink"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        Select Illness
+                      </a>
 
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                      <div
+                        class="dropdown-menu dropdown-block"
+                        aria-labelledby="dropdownMenuLink"
+                      >
+                        <a class="dropdown-item dropdown-block" href="#">
+                          Action
+                        </a>
+                        <a class="dropdown-item" href="#">
+                          Another action
+                        </a>
+                        <a class="dropdown-item" href="#">
+                          Something else here
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="form-group row">
+                  <label className="col-sm-2 col-form-label">Fees</label>
+                  <div className="col-sm-10">
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="pFees"
+                      placeholder="Fees"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+      {/* Edit patient Modal */}
     </div>
 
     // <div className="list row">
