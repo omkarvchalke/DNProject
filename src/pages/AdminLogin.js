@@ -10,18 +10,15 @@ const AdminLogin = () => {
         Link1="Patients"
         Link2="Book an Appointment"
         Link3="Income Graph"
-        Link4="Change Doctor Password"
         redirect1="/adminLogin"
         redirect2="/adminAppointment"
         redirect3="/adminGraph"
         panel_name="Admin"
       />
       <PatientsDisp />
-      <div class="fixed-bottom">
-        <Footer />
-      </div>
+      <div class="fixed-bottom">{/* <Footer /> */}</div>
     </div>
-  )
+  );
 };
 
 export default AdminLogin;

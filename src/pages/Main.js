@@ -20,7 +20,7 @@ const Main = () => {
             <Login />
           </div>
         </div>
-          <Footer />
+          {/* <Footer /> */}
       </div>
     </div>
   );

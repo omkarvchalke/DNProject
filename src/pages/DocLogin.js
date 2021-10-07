@@ -17,7 +17,7 @@ const DocLogin = () => {
       />
       <PatientsDisp />
       <div class="fixed-bottom">
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );

@@ -8,20 +8,17 @@ const AdminAppointment = () => {
   return (
     <div>
       <Navbar
-      Image="https://toppng.com/uploads/preview/health-plan-icon-hospital-icon-blue-11553476430fckf2owtwt.png"
+        Image="https://toppng.com/uploads/preview/health-plan-icon-hospital-icon-blue-11553476430fckf2owtwt.png"
         Link1="Patients"
         Link2="Book an Appointment"
         Link3="Income Graph"
-        Link4="Change Doctor Password"
         redirect1="/adminLogin"
         redirect2="/adminAppointment"
-        redirect3="/"
+        redirect3="/adminGraph"
         panel_name="Admin"
       />
       <AppointmentDisp />
-      <div class="fixed-bottom">
-        <Footer />
-      </div>
+      <div class="fixed-bottom">{/* <Footer /> */}</div>
     </div>
   );
 };

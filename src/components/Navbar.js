@@ -1,9 +1,9 @@
-import React from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import '../css/Navbar.css';
-
+import "../css/Navbar.css";
 
 const Navbar = (props) => {
+  // const [search,setSearch] = useState("")
   return (
     <div>
       <nav className="navbar sticky navbar-expand-md navbar-light bg-light">
@@ -54,29 +54,16 @@ const Navbar = (props) => {
               </a>
             </li> */}
           </ul>
-          <form className="form-inline my-2 my-lg-0 search-bar">
-            <input
-              className="form-control mr-sm-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button
-              className="btn btn-outline-success my-2 my-sm-0"
-              type="submit"
-            >
-              Search
-            </button>
-            { 
-            props.logout===false ?
-            <Link to="/">
-            <button className="invisible btn btn-outline-danger">Logout</button>
-            </ Link>
-              : <Link to="/">
-              <button className="ml-2 btn btn-outline-danger">Logout</button>
-              </ Link>
-            }
-          </form>
+          {props.logout === false ? null : (
+            <form className="form-inline my-2 my-lg-0 search-bar" >
+              
+              
+              <Link to="/">
+                <button className="ml-2 btn btn-outline-danger">Logout</button>
+              </Link>
+              
+            </form>
+          )}
         </div>
       </nav>
     </div>

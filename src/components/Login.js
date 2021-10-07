@@ -1,11 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 
 const Login = () => {
-  const [cred, setCred] =
-  useState([{ docName: "Doctor1", docPass: "12345" }, { adminName: "Admin", docPass: "12345" }])
-  const [docName,setdocName]=useState("")
-  const [docPass,setdocPass]=useState("")
+  let history = useHistory();
+
+  const [uname, setUname] = useState("");
+  const [pass, setPass] = useState("");
+
+  const Validate = (e) => {
+    e.preventDefault();
+    // console.log(cred[0][1]);
+    if (!pass || !uname) {
+      alert("Please enter all fields");
+      return;
+    } else {
+      if (uname === "Doctor" && pass === "doctor123") {
+        history.push("/docLogin");
+      } else if (uname === "Admin" && pass === "admin123") {
+        history.push("/adminLogin");
+      } else {
+        alert("Invalid Credentials");
+      }
+    }
+    // addPatients({ pname, page, pcontact });
+
+    console.log("Uname Pass print :", uname, pass);
+  };
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -23,14 +44,18 @@ const Login = () => {
 
               <div className="card-body login-card-body">
                 <p className="login-box-msg">Sign in to start your session</p>
-                <form action="../../index3.html" method="post">
+                <form
+                  action="../../index3.html"
+                  method="post"
+                  onSubmit={Validate}
+                >
                   <div className="input-group mb-3">
                     <input
-                      type="email"
+                      type="text"
                       className="form-control"
                       placeholder="Username"
-                      value={docName}
-                      onChange={(e) => setdocName(e.target.value)}
+                      value={uname}
+                      onChange={(e) => setUname(e.target.value)}
                     />
                     <div className="input-group-append">
                       <div className="input-group-text">
@@ -44,8 +69,8 @@ const Login = () => {
                       type="password"
                       className="form-control"
                       placeholder="Password"
-                      value={docPass}
-                      onChange={(e) => setdocPass(e.target.value)}
+                      value={pass}
+                      onChange={(e) => setPass(e.target.value)}
                     />
                     <div className="input-group-append">
                       <div className="input-group-text">
@@ -53,30 +78,18 @@ const Login = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="row justify-content-center">
-                    {/* /.col */}
-                    <div className="col-6">
-                          <button
-                            type="submit"
-                            className="btn btn-primary btn-block">
-                            <Link to="/docLogin" className="text-center text-light">Doc Login</Link>
-                          </button>
-                    </div>
-                    <div className="col-6">
-                      <button
-                        type="submit"
-                        className="btn btn-secondary btn-block">
-                        <Link to="/adminLogin" className="text-center text-light">Admin Login</Link>
-                      </button>
-                    </div>
-                  </div>
+                 
+                    <button type="submit" className="btn btn-primary btn-block">
+                      LOGIN
+                    </button>
+                
                 </form>
               </div>
             </div>
           </div>
         </div>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 };
 

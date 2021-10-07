@@ -1,5 +1,5 @@
 import React from 'react'
-import SimpleReactFooter from "simple-react-footer";
+// import SimpleReactFooter from "simple-react-footer";
 
 const Footer = () => {
      const description = "";
@@ -7,7 +7,7 @@ const Footer = () => {
     const columns = [];
     return (
         <div className="col-12 w-100 px-0 mx-0 mt-5">
-    <SimpleReactFooter 
+    {/* <SimpleReactFooter 
       description={description} 
       title={title}
       columns={columns}
@@ -23,7 +23,7 @@ const Footer = () => {
       backgroundColor="#f8f999"
       fontColor="black"
       copyrightColor="darkgrey"
-   />
+   /> */}
         </div>
     )
 }
