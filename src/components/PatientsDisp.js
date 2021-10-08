@@ -95,7 +95,33 @@ const PatientsDisp = () => {
   return (
     <div>
       <div className="col-md-11 mx-auto mt-5">
-        <h2 class="text">Patients</h2>
+        <div className="row mx-auto ">
+          <div className="col-md-9 mx-auto mb-3">
+            <h2 class="text">Patients</h2>
+          </div>
+          <div className="col-md-3 mx-auto mb-3">
+            <button
+              // onClick={() => handleUpdate(pati.id)}
+              type="button"
+              className="btn btn-outline-success btn-sm btn-block"
+              data-toggle="modal"
+              data-target="#EditPatient"
+            >
+              Add Patient
+            </button>
+          </div>
+        </div>
+
+        {/* <h2 class="text">Patients</h2> */}
+        {/* <button
+          // onClick={() => handleUpdate(pati.id)}
+          type="button"
+          className="btn btn-outline-warning btn-sm "
+          data-toggle="modal"
+          data-target="#EditPatient"
+        >
+          Edit
+        </button> */}
         <table className="table">
           <thead>
             <tr>
@@ -137,7 +163,7 @@ const PatientsDisp = () => {
                 <td>{pati.average}</td>
                 <td>{pati.total}</td> */}
 
-                  <td>
+                  {/* <td>
                     <button
                       // onClick={() => handleUpdate(pati.id)}
                       type="button"
@@ -147,7 +173,7 @@ const PatientsDisp = () => {
                     >
                       Edit
                     </button>
-                  </td>
+                  </td> */}
 
                   <td>
                     <button

@@ -151,7 +151,9 @@ const AppointmentDisp = () => {
           <tr>
             <th>Name</th>
 
-            <th></th>
+            <th>Contact No.</th>
+            <th>Date</th>
+            <th>Time</th>
             <th></th>
             <th></th>
           </tr>
@@ -161,8 +163,10 @@ const AppointmentDisp = () => {
             <tbody key={appoint.paname}>
               <tr>
                 <td>{appoint.paname}</td>
-                {/* <td>{appoint.subject1}</td>
-                <td>{appoint.subject2}</td>
+                <td>{appoint.pacontact}</td>
+                <td>{appoint.apdate}</td>
+                <td>{appoint.aptime}</td>
+                {/*<td>{appoint.subject2}</td>
                 <td>{appoint.subject3}</td>
                 <td>{appoint.average}</td>
                 <td>{appoint.total}</td> */}
