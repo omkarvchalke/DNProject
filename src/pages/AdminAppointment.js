@@ -18,7 +18,9 @@ const AdminAppointment = () => {
         panel_name="Admin"
       />
       <AppointmentDisp />
-      <div class="fixed-bottom">{/* <Footer /> */}</div>
+      <div class="fixed-bottom">
+        <Footer />
+      </div>
     </div>
   );
 };

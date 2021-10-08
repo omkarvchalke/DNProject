@@ -1,6 +1,7 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
 import Navbar from "./Navbar";
+import Footer from "../components/Footer";
 
 const DocGraph = () => {
   const state = {
@@ -50,6 +51,9 @@ const DocGraph = () => {
             },
           }}
         />
+      </div>
+      <div class="fixed-bottom">
+        <Footer />
       </div>
     </div>
   );

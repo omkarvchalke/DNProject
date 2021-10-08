@@ -17,7 +17,7 @@ const DocAppointments = () => {
       />
       <AppointmentDisp />
       <div class="fixed-bottom">
-        {/* <Footer /> */}
+        <Footer />
       </div>
         </div>
     )

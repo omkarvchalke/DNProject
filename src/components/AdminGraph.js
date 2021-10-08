@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import { Bar } from "react-chartjs-2";
+import Footer from "../components/Footer";
 
 const AdminGraph = () => {
   const data = {
@@ -69,6 +70,9 @@ const AdminGraph = () => {
             },
           }}
         />
+      </div>
+      <div class="fixed-bottom">
+        <Footer />
       </div>
     </div>
   );

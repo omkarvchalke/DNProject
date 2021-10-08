@@ -6,10 +6,15 @@ import Navbar from "../components/Navbar";
 const Main = () => {
   return (
     <div>
-      <div >
+      <div>
         <Navbar
           Image="https://toppng.com/uploads/preview/health-plan-icon-hospital-icon-blue-11553476430fckf2owtwt.png"
-          Link1="News Feed" Link2="FAQ" redirect1='/' redirect2='/faq' logout={false} />
+          Link1="News Feed"
+          Link2="FAQ"
+          redirect1="/"
+          redirect2="/faq"
+          logout={false}
+        />
       </div>
       <div class="container-fluid">
         <div class="row">
@@ -20,7 +25,9 @@ const Main = () => {
             <Login />
           </div>
         </div>
-          {/* <Footer /> */}
+      </div>
+      <div class="fixed-bottom">
+        <Footer />
       </div>
     </div>
   );

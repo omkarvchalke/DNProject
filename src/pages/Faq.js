@@ -24,7 +24,9 @@ const Faq = () => {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
+      <div class="fixed-bottom">
+        <Footer />
+      </div>
     </div>
   );
 };

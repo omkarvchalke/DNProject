@@ -62,6 +62,8 @@ const AppointmentDisp = () => {
   const [apdate, setapDate] = useState("");
   const [aptime, setapTime] = useState("");
 
+  const [searchValue, setsearchValue] = useState("");
+
   const handleDeleteAppoint = (paname) => {
     PatientService.delAppoint(paname)
       .then((response) => {
@@ -112,13 +114,46 @@ const AppointmentDisp = () => {
     handleDeleteAppoint(pname);
   };
 
+  // const [searchList, setSearchList] = useState("");
+  // const searchFunc = () => {
+  //   console.log("asdfgggggggggggggggggggggggggggg", searchValue);
+
+  //   PatientService.getSearch(searchValue)
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       setSearchList(response.data);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // };
+  const search_patient = () => {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchbar");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  };
+
   return (
     <div className="col-md-8 mx-auto mt-5">
       <div className="row mx-auto ">
         <div className="col-md-3 mx-auto mb-5">
           <h2>Appointments</h2>
         </div>
-        <div className="col-md-2 mx-auto mb-5">
+        <div className="col-md-3 mx-auto mb-5">
           <button
             class="btn btn-primary"
             data-toggle="modal"
@@ -127,26 +162,23 @@ const AppointmentDisp = () => {
             Add Appointment
           </button>
         </div>
-        <div className="col-md-3 mx-auto mb-5">
-          <input
-            className="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-            // onChange={this.onchange}
-          />
-        </div>
-        <div className="col-md-3 mx-auto mb-5">
-          <button
-            className="btn btn-outline-success my-2 my-sm-0"
-            type="submit"
-          >
-            Search
-          </button>
+
+        <div className="row mx-auto ">
+          <div className="col-md-12 mx-auto mb-5">
+            <input
+              id="searchbar"
+              className="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              onChange={search_patient}
+              // onChange={this.onchange}
+            />
+          </div>
         </div>
       </div>
 
-      <table className="table">
+      <table id="myTable" className="table">
         <thead>
           <tr>
             <th>Name</th>

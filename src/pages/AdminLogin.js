@@ -16,7 +16,9 @@ const AdminLogin = () => {
         panel_name="Admin"
       />
       <PatientsDisp />
-      <div class="fixed-bottom">{/* <Footer /> */}</div>
+      <div class="fixed-bottom">
+        <Footer />
+      </div>
     </div>
   );
 };

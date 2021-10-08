@@ -7,6 +7,7 @@ const getAllPatients = () => {
 const addPatient = (data) => {
   return http.post("/doctor/addPatient", data);
 };
+
 const delPatient = (pname) => {
   return http.delete(`/doctor/removePatient/${pname}`);
 };
@@ -22,6 +23,11 @@ const getAllAppoint = () => {
 const delAppoint = (paname) => {
   return http.delete(`doctor/removeAppointment/${paname}`);
 };
+
+const getSearch = (paname) => {
+  return http.get(`admin/getAppointment/${paname}`);
+};
+
 // eslint-disable-next-line
 export default {
   getAllPatients,
@@ -30,4 +36,5 @@ export default {
   delAppoint,
   BookAppointment,
   addPatient,
+  getSearch,
 };

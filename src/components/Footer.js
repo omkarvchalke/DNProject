@@ -1,31 +1,16 @@
-import React from 'react'
-// import SimpleReactFooter from "simple-react-footer";
+import React from "react";
+import SimpleReactFooter from "simple-react-footer";
 
 const Footer = () => {
-     const description = "";
-    const title = "";
-    const columns = [];
-    return (
-        <div className="col-12 w-100 px-0 mx-0 mt-5">
-    {/* <SimpleReactFooter 
-      description={description} 
-      title={title}
-      columns={columns}
-      linkedin="fluffy_cat_on_linkedin"
-      facebook="fluffy_cat_on_fb"
-      twitter="fluffy_cat_on_twitter"
-      instagram="fluffy_cat_live"
-      youtube="UCFt6TSF464J8K82xeA?"
-      pinterest="fluffy_cats_collections"
-      copyright="black"
-      iconColor="black"
-      width="100%"
-      backgroundColor="#f8f999"
-      fontColor="black"
-      copyrightColor="darkgrey"
-   /> */}
+  return (
+    <div>
+      <footer class="bg-primary text-success page-footer font-small blue">
+        <div class="footer-copyright text-center py-3">
+          © All Copyrights are Reserved : Team 10
         </div>
-    )
-}
+      </footer>
+    </div>
+  );
+};
 
-export default Footer
+export default Footer;
