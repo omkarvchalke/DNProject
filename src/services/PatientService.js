@@ -4,19 +4,21 @@ const getAllPatients = () => {
   return http.get("/doctor/getAllPatients");
 };
 
-const addPatient = () => {
-  return http.post("/doctor/addPatient");
+const addPatient = (data) => {
+  return http.post("/doctor/addPatient", data);
 };
 const delPatient = (pname) => {
   return http.delete(`/doctor/removePatient/${pname}`);
 };
 
-const BookAppointment = (aList) => {
-  return http.post(`/admin/bookAppointment/${aList}`);
+const BookAppointment = (data) => {
+  return http.post("/admin/bookAppointment", data);
 };
+
 const getAllAppoint = () => {
   return http.get("/admin/getAllAppointments");
 };
+
 const delAppoint = (paname) => {
   return http.delete(`doctor/removeAppointment/${paname}`);
 };
@@ -26,5 +28,6 @@ export default {
   delPatient,
   getAllAppoint,
   delAppoint,
-  BookAppointment
+  BookAppointment,
+  addPatient,
 };

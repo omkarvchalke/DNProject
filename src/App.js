@@ -9,6 +9,7 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminAppointment from "./pages/AdminAppointment";
 import DocGraph from "./components/DocGraph";
 import AdminGraph from "./components/AdminGraph";
+import Modal from "./components/Modal";
 
 function App() {
   return (
@@ -22,10 +23,10 @@ function App() {
         <Route path="/adminAppointment" component={AdminAppointment}></Route>
         <Route path="/docGraph" component={DocGraph}></Route>
         <Route path="/adminGraph" component={AdminGraph}></Route>
+        <Route path="/viewPatient" component={Modal}></Route>
       </Switch>
     </Router>
   );
 }
 
 export default App;
-

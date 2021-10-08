@@ -20,6 +20,31 @@ const AppointmentDisp = () => {
       });
   };
 
+  const createAppoint = () => {
+    if (!paname) {
+      alert("Please Add Values");
+      return;
+    }
+    const item = {
+      paname,
+      apdate,
+      aptime,
+      pacontact,
+    };
+
+    PatientService.BookAppointment(item)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    setpaName("");
+    setapDate("");
+    setapTime("");
+    setpContact("");
+  };
+
   const [pname, setpName] = useState("");
   const [page, setpAge] = useState("");
   const [pgender, setpGender] = useState("");
@@ -37,49 +62,6 @@ const AppointmentDisp = () => {
   const [apdate, setapDate] = useState("");
   const [aptime, setapTime] = useState("");
 
-  const AddAppointmentList = (appt) => {
-    console.log(appt);
-    // setappointmentsList([...appointmentsList, appt]);
-    console.log(appointmentsList);
-  };
-
-  const AddAppointment = (e) => {
-    e.preventDefault();
-    if (!paname) {
-      alert("Please Add Values");
-      return;
-    }
-    const item = {
-      paname,
-      apdate,
-      aptime,
-      pacontact,
-    };
-    // setappointmentsList([...appointmentsList, item]);
-    // AddAppointmentList({ paname, apdate, aptime, pacontact });
-    axios
-      .post(`localhost:8025/admin/bookAppointment`, item)
-      .then((response) => {
-        console.log(response);
-      });
-    console.log(appointmentsList);
-    // TestApp();
-    // axios.post("/admin/bookAppointment", appointmentsList);
-    // BookAppointment(appointmentsList);
-  };
-
-  // const TestApp = async () => {
-  //   try {
-  //     console.log(appointmentsList);
-  //     const res = axios.post(
-  //       "localhost:8025/admin/bookAppointment",
-  //       appointmentsList
-  //     );
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
   const handleDeleteAppoint = (paname) => {
     PatientService.delAppoint(paname)
       .then((response) => {
@@ -89,32 +71,54 @@ const AppointmentDisp = () => {
         console.log(e);
       });
   };
-  const BookAppointment = (aList) => {
-    PatientService.BookAppointment(aList)
+
+  const addPatienttoDB = () => {
+    if (!pname) {
+      alert("Please Add Values");
+      return;
+    }
+    const item = {
+      pname,
+      page,
+      pgender,
+      pcontact,
+      illness,
+      prevDiagno,
+      currDiagno,
+      prevMeds,
+      currMeds,
+      dose,
+      fees,
+    };
+
+    PatientService.addPatient(item)
       .then((response) => {
-        fetchAllAppoint();
+        console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
       });
+    setpName("");
+    setpAge("");
+    setpContact("");
+    setpGender("");
+    setPrevDiagno("");
+    setCurrDiagno("");
+    setprevMeds("");
+    setCurrMeds("");
+    setDose("");
+    setIllness("");
+    setFees("");
+    handleDeleteAppoint(pname);
   };
-  // ///////////////////////////////////////////
-  // useState = {
-  //   search: ""
-  // };
-  // const { search } = this.state;
-  //     const fileredAppointments = appointmentsList.filter(country => {
-  //       return country.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
-  //     });
 
-  // /////////////////////////////////////
   return (
     <div className="col-md-8 mx-auto mt-5">
       <div className="row mx-auto ">
         <div className="col-md-3 mx-auto mb-5">
           <h2>Appointments</h2>
         </div>
-        <div className="col-md-3 mx-auto mb-5">
+        <div className="col-md-2 mx-auto mb-5">
           <button
             class="btn btn-primary"
             data-toggle="modal"
@@ -164,7 +168,7 @@ const AppointmentDisp = () => {
                 <td>{appoint.total}</td> */}
                 <td>
                   <button
-                    // onClick={() => handleUpdate(pati.id)}
+                    // onClick=
                     type="button"
                     className=" btn btn-block btn-outline-warning btn-sm"
                     data-toggle="modal"
@@ -214,7 +218,7 @@ const AppointmentDisp = () => {
                 </button>
               </div>
               <div class="modal-body">
-                <form onSubmit="">
+                <form onSubmit={addPatienttoDB}>
                   <div className="form-group row">
                     <label className="col-md-3 col-form-label">Name</label>
                     <div className="col-md-9">
@@ -272,9 +276,25 @@ const AppointmentDisp = () => {
                       />
                     </div>
                   </div>
-
                   <div className="form-group row">
-                    <label className="col-md-3 col-form-label">Diagnosis</label>
+                    <label className="col-md-3 col-form-label">
+                      Previous Diagnosis
+                    </label>
+                    <div className="col-md-9">
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="pPrevDiagnosis"
+                        placeholder="Diagnosis"
+                        value={prevDiagno}
+                        onChange={(e) => setPrevDiagno(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label className="col-md-3 col-form-label">
+                      Current Diagnosis
+                    </label>
                     <div className="col-md-9">
                       <input
                         type="text"
@@ -286,9 +306,25 @@ const AppointmentDisp = () => {
                       />
                     </div>
                   </div>
-
                   <div className="form-group row">
-                    <label className="col-md-3 col-form-label">Medicines</label>
+                    <label className="col-md-3 col-form-label">
+                      Previous Medicines
+                    </label>
+                    <div className="col-md-9">
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="pCurrMeds"
+                        placeholder="Medicines"
+                        value={prevMeds}
+                        onChange={(e) => setprevMeds(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group row">
+                    <label className="col-md-3 col-form-label">
+                      Current Medicines
+                    </label>
                     <div className="col-md-9">
                       <input
                         type="text"
@@ -387,7 +423,7 @@ const AppointmentDisp = () => {
                 </button>
               </div>
               <div class="modal-body">
-                <form onSubmit={AddAppointment}>
+                <form onSubmit={createAppoint}>
                   <div className="form-group row">
                     <label className="col-md-3 col-form-label">Name</label>
                     <div className="col-md-9">

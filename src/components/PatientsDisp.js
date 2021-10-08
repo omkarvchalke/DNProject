@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import PatientService from "../services/PatientService";
 import axios from "axios";
+import Modal from "./Modal";
+import { Link } from "react-router-dom";
 
 const PatientsDisp = () => {
   const [patientsList, setpatientsList] = useState([]);
@@ -39,14 +41,6 @@ const PatientsDisp = () => {
       });
   };
 
-  const updateAll = async () => {
-    const res = await axios.post(
-      "localhost:8025/doctor/addPatient",
-      patientsList
-    );
-    console.log(res);
-  };
-
   const [pname, setpName] = useState("");
   const [page, setpAge] = useState("");
   const [pgender, setpGender] = useState("");
@@ -59,24 +53,12 @@ const PatientsDisp = () => {
   const [illness, setIllness] = useState("");
   const [fees, setFees] = useState("");
 
-  const addPatients = (pat) => {
-    // console.log(patients);
-    // const id = Math.floor(Math.random() * 10000) + 1;
-    // console.log(id)
-    // const newPatients = {  ...patients };
-    console.log(pat);
-    setpatientsList([...patientsList, pat]);
-    console.log(patientsList);
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    console.log(patientsList);
+  const addPatienttoDB = () => {
     if (!pname) {
-      alert("Please Add a Task");
+      alert("Please Add Values");
       return;
     }
-    addPatients({
+    const item = {
       pname,
       page,
       pgender,
@@ -88,9 +70,15 @@ const PatientsDisp = () => {
       currMeds,
       dose,
       fees,
-    });
+    };
 
-    console.log("Console print :", patientsList);
+    PatientService.addPatient(item)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
     setpName("");
     setpAge("");
     setpContact("");
@@ -104,45 +92,24 @@ const PatientsDisp = () => {
     setFees("");
   };
 
-  //     const [associates, setAssociates] = useState([]);
-  //   //const [currAssc, setCurrAssc] = useState({});
-
-  //   useEffect(() => {
-  //     console.log("hehe");
-  //     fetchAll();
-  //   }, []);
-
-  //   const fetchAll = () => {
-  //     AssociateService.getAll()
-  //       .then((response) => {
-  //         setAssociates(response.data);
-  //       })
-  //       .catch((e) => {
-  //         console.log(e);
-  //       });
-  //   };
-
-  //   const handleDelete = (id) => {
-  //     AssociateService.delAssc(id)
-  //       .then((response) => {
-  //         fetchAll();
-  //       })
-  //       .catch((e) => {
-  //         console.log(e);
-  //       });
-  //   };
-
-  //   const handleUpdate = (id) => {};
-
   return (
     <div>
-      <div className="col-md-8 mx-auto mt-5">
+      <div className="col-md-11 mx-auto mt-5">
         <h2 class="text">Patients</h2>
         <table className="table">
           <thead>
             <tr>
               <th>Patient Name</th>
-              <th></th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Contact</th>
+              <th>Illness</th>
+              <th>Previous Diagnosis</th>
+              <th>Current Diagnosis</th>
+              <th>Previous Medication</th>
+              <th>Current Medication</th>
+              <th>Dose</th>
+              <th>Fees</th>
               <th></th>
               <th></th>
             </tr>
@@ -153,23 +120,23 @@ const PatientsDisp = () => {
               patientsList.map((pati) => (
                 <tr key={pati.pname}>
                   <td>{pati.pname}</td>
-
+                  <td>{pati.page}</td>
+                  <td>{pati.pgender}</td>
+                  <td>{pati.pcontact}</td>
+                  <td>{pati.illness}</td>
+                  <td>{pati.prevDiagno}</td>
+                  <td>{pati.currDiagno}</td>
+                  <td>{pati.prevMeds}</td>
+                  <td>{pati.currMeds}</td>
+                  <td>{pati.dose}</td>
+                  <td>{pati.fees}</td>
+                  {/* {setPatientName(pati.pname)} */}
                   {/* <td>{pati.subject1}</td>
                 <td>{pati.subject2}</td>
                 <td>{pati.subject3}</td>
                 <td>{pati.average}</td>
                 <td>{pati.total}</td> */}
-                  <td>
-                    <button
-                      // onClick={() => handleDelete(pati.id)}
-                      type="button"
-                      className="btn btn-outline-success btn-sm btn-block"
-                      data-toggle="modal"
-                      data-target="#ViewPatient"
-                    >
-                      View
-                    </button>
-                  </td>
+
                   <td>
                     <button
                       // onClick={() => handleUpdate(pati.id)}
@@ -193,6 +160,7 @@ const PatientsDisp = () => {
                   </td>
                 </tr>
               ))}
+            {/* <Modal modalName=''/> */}
           </tbody>
         </table>
 
@@ -224,7 +192,7 @@ const PatientsDisp = () => {
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form onSubmit={onSubmit}>
+                  <form>
                     <div className="form-group row">
                       <label className="col-md-3 col-form-label">Name</label>
                       <div className="col-md-9">
@@ -291,8 +259,8 @@ const PatientsDisp = () => {
                           type="text"
                           className="form-control"
                           id="pPrevDiagnosis"
-                          placeholder="Previous Diagnosis from mongo"
-                          disabled
+                          placeholder="Previous Diagnosis"
+                          // disabled
                           value={prevDiagno}
                           onChange={(e) => setPrevDiagno(e.target.value)}
                         />
@@ -322,8 +290,8 @@ const PatientsDisp = () => {
                           type="text"
                           className="form-control"
                           id="pPrevMeds"
-                          placeholder="Previous Medication from mongo"
-                          disabled
+                          placeholder="Previous Medication"
+                          // disabled
                           value={prevMeds}
                           onChange={(e) => setprevMeds(e.target.value)}
                         />
@@ -395,7 +363,7 @@ const PatientsDisp = () => {
                       <button
                         type="submit"
                         class="btn btn-primary"
-                        onClick={updateAll}
+                        onClick={addPatienttoDB}
                       >
                         Save changes
                       </button>
@@ -409,6 +377,7 @@ const PatientsDisp = () => {
 
         {/* View Patient Modal below */}
 
+        {/* 
         <div
           class="modal fade"
           id="ViewPatient"
@@ -463,7 +432,7 @@ const PatientsDisp = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/*Iterating Patients list */}
       </div>
